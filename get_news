@@ -1,0 +1,13 @@
+#!/bin/sh
+
+width=$(stty size | cut -d' ' -f2)
+today=$(date +%Y-%m-%d)
+yesterday=$(date +%Y-%m-%d -d yesterday)
+
+echo ""
+
+wget -qO- https://en.wikipedia.org/wiki/Portal:Current_events | \
+	html2text -style pretty | \
+	sed -n "/$today/,/$yesterday/p" | \
+	head -n-2 | \
+	grep -v edithistorywatch

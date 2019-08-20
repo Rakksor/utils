@@ -1,0 +1,10 @@
+#!/bin/sh
+
+{
+	echo "USER CPU% MEM%"
+
+	ps axo user:64 --sort user --no-headers | uniq | while read user; do
+		ps u -u "$user" --no-headers | awk -v user="$user" '{ cpu += $3; mem += $4 } END { print user, cpu, mem; }'
+	done
+} | column -t
+
