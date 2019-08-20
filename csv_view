@@ -7,5 +7,5 @@ if [ "$ext" = "csv" ]; then
 elif [ "$ext" = "tsv" ]; then
 	column -t -s "	" -n "$@" | less -F -S -X -K -N
 else
-	echo "unrecoginzed extensions: .$ext"
+	echo "unrecognized extension: .$ext"
 fi
