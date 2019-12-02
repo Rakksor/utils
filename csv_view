@@ -1,11 +1,3 @@
 #!/bin/sh
 
-ext="${@##*.}"
-
-if [ "$ext" = "csv" ]; then
-	column -t -s "," -n "$@" | less -F -S -X -K -N
-elif [ "$ext" = "tsv" ]; then
-	column -t -s "	" -n "$@" | less -F -S -X -K -N
-else
-	echo "unrecognized extension: .$ext"
-fi
+column -t -s "," -n "$@" | less -F -S -X -K -N
